@@ -1,4 +1,4 @@
-import Module from "./doom.js";
+import Doom from "./doom.js";
 
 const doomMusic = `b2e05b4e8dff8d76f8f4c3a724e7dbd365390536 = /music/d_inter.ogg
 0c0acce45130bab935d2f1e85664b29a3c724fcd = /music/d_intro.ogg
@@ -43,7 +43,7 @@ db94e8e1d7c02092eab553859b45b00dcaed7471 = /d_e1m6.ogg
 36b97b87fe98348d44b6c2fdf76d49f8b123d277 = /d_e2m6.ogg`;
 
 export const loadDoom = async (canvas, consoleLog) => {
-  consoleLog('Loading doom.wad...');
+  consoleLog("Loading doom.wad...");
   const res = await fetch("./data/doom.wad");
   const content = await res.arrayBuffer();
 
@@ -54,9 +54,9 @@ export const loadDoom = async (canvas, consoleLog) => {
     type: "IWAD"
   };
 
-  consoleLog('Loading doom.wasm...');
+  consoleLog("Loading doom.wasm...");
   const audioContext = new AudioContext();
-  const module = await Module({
+  const doom = await Doom({
     preRun: [
       ({ FS }) => {
         // add music
@@ -75,13 +75,13 @@ export const loadDoom = async (canvas, consoleLog) => {
 
   return {
     pause: () => {
-      module.pauseMainLoop();
+      doom.pauseMainLoop();
       if (audioContext) {
         audioContext.suspend();
       }
     },
     resume: () => {
-      module.resumeMainLoop();
+      doom.resumeMainLoop();
       if (audioContext) {
         audioContext.resume();
       }

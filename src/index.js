@@ -6,6 +6,11 @@ console.error = () => {};
 console.info = () => {};
 
 const wait = time => new Promise(r => setTimeout(r, time));
+const onFocus = () =>
+  new Promise(resolve =>
+    window.addEventListener("focus", resolve, { once: true })
+  );
+
 const logImage = imageUrl => {
   consoleLog(
     "%c ",
@@ -41,7 +46,14 @@ const renderToConsole = async canvas => {
 };
 
 const main = async () => {
-  // window.doom = async () => {
+  // we need to make sure the user has clicked on the main window
+  // or chrome won't allow us to play audio
+  // also the controls will not work correctly
+  if (!document.hasFocus()) {
+    consoleLog("click on the main window");
+    await onFocus();
+  }
+
   const canvas = document.createElement("canvas");
   canvas.id = "canvas";
   canvas.width = 320;
@@ -51,8 +63,15 @@ const main = async () => {
   document.body.appendChild(canvas);
 
   const doom = await loadDoom(canvas, consoleLog);
-  // will never finish
+
+  // async function will never finish
   renderToConsole(canvas);
+
+  if (!document.hasFocus()) {
+    doom.pause();
+    isPaused = true;
+    consoleLog("click on the main window");
+  }
 
   window.addEventListener("blur", () => {
     if (isPaused) return;
