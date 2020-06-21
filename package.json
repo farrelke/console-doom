@@ -1,0 +1,23 @@
+{
+  "name": "webpack-doom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "dev": "webpack-dev-server "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "copy-webpack-plugin": "^6.0.2",
+    "lodash": "^4.17.15",
+    "webpack-dev-server": "^3.11.0"
+  }
+}

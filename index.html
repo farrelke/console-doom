@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Getting Started</title>
+  </head>
+  <body>
+    <button id="start-btn" onclick="loadDoom()">Start Doom</button>
+
+    <script type="application/javascript">
+      var isLoaded = false;
+      function loadDoom() {
+        if (isLoaded) return;
+        isLoaded = false;
+        var script = document.createElement("script"); // create a script DOM node
+        script.src = "main.js"; // set its src to the provided URL
+        document.head.appendChild(script); // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
+      }
+    </script>
+  </body>
+</html>
