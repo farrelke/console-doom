@@ -79,10 +79,6 @@ export const loadDoom = async (canvas, consoleLog) => {
         FS.writeFile(doomFile.url, new Uint8Array(doomFile.data));
       }
     ],
-    locateFile: name => {
-      consoleLog(name);
-      return name;
-    },
     arguments: `-iwad ${doomFile.filename}`,
     canvas: canvas
   });
