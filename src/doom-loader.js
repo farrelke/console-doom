@@ -46,6 +46,8 @@ const isDev =
   location.hostname === "localhost" || location.hostname === "127.0.0.1";
 
 export const loadDoom = async (canvas, consoleLog) => {
+
+  console.log(location.hostname)
   consoleLog("Loading doom.wad...");
 
   const wadUrl = isDev
@@ -77,6 +79,10 @@ export const loadDoom = async (canvas, consoleLog) => {
         FS.writeFile(doomFile.url, new Uint8Array(doomFile.data));
       }
     ],
+    locateFile: name => {
+      consoleLog(name);
+      return name;
+    },
     arguments: `-iwad ${doomFile.filename}`,
     canvas: canvas
   });

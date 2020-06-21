@@ -876,7 +876,15 @@ var Module = (function() {
         console.log($0);
         var filename = Module.UTF8ToString($0);
         window.doom_music_filename = filename;
-        fetch(filename)
+        const isDev =
+          location.hostname === "localhost" ||
+          location.hostname === "127.0.0.1";
+
+        const fileUrl = isDev
+          ? filename
+          : "https://console-doom.netlify.app" + filename;
+
+        fetch(fileUrl)
           .then(function(res) {
             return res.arrayBuffer();
           })
