@@ -42,9 +42,17 @@ db94e8e1d7c02092eab553859b45b00dcaed7471 = /d_e1m6.ogg
 37c6cefa351b06995152558af4b866d581da945f = /d_e1m5.ogg
 36b97b87fe98348d44b6c2fdf76d49f8b123d277 = /d_e2m6.ogg`;
 
+const isDev =
+  location.hostname === "localhost" || location.hostname === "127.0.0.1";
+
 export const loadDoom = async (canvas, consoleLog) => {
   consoleLog("Loading doom.wad...");
-  const res = await fetch("./data/doom.wad");
+
+  const wadUrl = isDev
+    ? "./data/doom.wad"
+    : "https://console-doom.netlify.app/data/doom.wad";
+
+  const res = await fetch(wadUrl);
   const content = await res.arrayBuffer();
 
   const doomFile = {
