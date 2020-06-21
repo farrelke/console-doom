@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Getting Started</title>
+    <title>Console DOOM</title>
   </head>
   <body>
     <button id="start-btn" onclick="loadDoom()">Start Doom</button>
+
+    <h1>Controls</h1>
+    <p>
+      Q: Fire
+      E: Use
+      WASD: Forward, Strafe Left, Backward, Strafe Right
+      Left Arrow: Turn Left
+      Right Arrow: Turn Right
+      Shift: Run
+      Escape: Exit menu
+      Enter: Select menu item
+    </p>
 
     <script type="application/javascript">
       var isLoaded = false;
       function loadDoom() {
         if (isLoaded) return;
-        isLoaded = false;
+        isLoaded = true;
         console.log("Loading main.js...");
-        var script = document.createElement("script"); // create a script DOM node
-        script.src = "main.js"; // set its src to the provided URL
-        document.head.appendChild(script); // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
+        var script = document.createElement("script");
+        script.src = "main.js";
+        document.head.appendChild(script);
       }
 
       console.doom = () => {
