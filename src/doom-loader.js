@@ -42,7 +42,8 @@ db94e8e1d7c02092eab553859b45b00dcaed7471 = /d_e1m6.ogg
 37c6cefa351b06995152558af4b866d581da945f = /d_e1m5.ogg
 36b97b87fe98348d44b6c2fdf76d49f8b123d277 = /d_e2m6.ogg`;
 
-export const loadDoom = async canvas => {
+export const loadDoom = async (canvas, consoleLog) => {
+  consoleLog('Loading doom.wad...');
   const res = await fetch("./data/doom.wad");
   const content = await res.arrayBuffer();
 
@@ -53,6 +54,7 @@ export const loadDoom = async canvas => {
     type: "IWAD"
   };
 
+  consoleLog('Loading doom.wasm...');
   const audioContext = new AudioContext();
   const module = await Module({
     preRun: [

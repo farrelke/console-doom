@@ -50,7 +50,7 @@ const main = async () => {
   canvas.style.imageRendering = "pixelated";
   document.body.appendChild(canvas);
 
-  const doom = await loadDoom(canvas);
+  const doom = await loadDoom(canvas, consoleLog);
   // will never finish
   renderToConsole(canvas);
 
