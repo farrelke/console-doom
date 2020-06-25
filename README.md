@@ -22,7 +22,7 @@ I have slightly modified the generated file to fetch the music files from https:
 
 ## Add console.doom to your site
 
-Just add this script to your site
+Just add this Javascript to your site
 ```js
 var isDoomLoaded = false;
 console.doom = function() {
