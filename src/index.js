@@ -1,5 +1,7 @@
 import { loadDoom } from "./doom-loader";
 
+
+
 const consoleLog = console.log;
 console.log = () => {};
 console.error = () => {};
@@ -46,6 +48,10 @@ const renderToConsole = async canvas => {
 };
 
 const main = async () => {
+  if (isMobile) {
+
+  }
+
   // we need to make sure the user has clicked on the main window
   // or chrome won't allow us to play audio
   // also the controls will not work correctly
@@ -58,7 +64,10 @@ const main = async () => {
   canvas.id = "canvas";
   canvas.width = 320;
   canvas.height = 320;
+  // if the user is using a mobile, just play it in the screen
+
   canvas.style.display = "none";
+
   canvas.style.imageRendering = "pixelated";
   document.body.appendChild(canvas);
 
