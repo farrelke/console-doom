@@ -23,7 +23,7 @@ console.doom = function() {
 };
 ```
 
-# Attributions
+## Attributions
 
 DOOM® is a registered trademark of ZeniMax Media Inc. in the US and/or other countries. Id Software® is a registered trademark of ZeniMax Media Inc. in the US and/or other countries. WebDOOM is in no way affiliated with ZeniMax Media Inc. or id Software LLC and is not approved by ZeniMax Media Inc. or id Software.
 
